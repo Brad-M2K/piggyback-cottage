@@ -1,26 +1,78 @@
 @import "tailwindcss";
 
+/* Cozy Northumberland cottage theme */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Base light mode */
+  --background: #faf7f2; /* cream */
+  --foreground: #2a2a2a; /* ink */
+
+  /* Palette */
+  --cream: #faf7f2;
+  --forest: #2e5e4e; /* deep green from woodlands */
+  --heather: #7a5c7b; /* purple tones from moorland heather */
+  --slate: #58606b; /* coastal slate/stone */
+  --ink: #2a2a2a;
+  --golden: #c5a572; /* warm brass/amber accents */
 }
 
 @theme inline {
+  /* Map CSS vars to Tailwind tokens */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-cream: var(--cream);
+  --color-forest: var(--forest);
+  --color-heather: var(--heather);
+  --color-slate: var(--slate);
+  --color-ink: var(--ink);
+  --color-golden: var(--golden);
+
+  /* Typography tokens using next/font variables provided in layout */
+  --font-sans: var(--font-body);
+  --font-serif: var(--font-heading);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #0f1210; /* near-black with green tint */
+    --foreground: #e9e6df; /* warm off-white */
+
+    /* Subtle shifts for dark mode harmony */
+    --forest: #3b7a64;
+    --heather: #9a7aa0;
+    --slate: #8b95a5;
+    --ink: #e9e6df;
+    --golden: #d7b982;
   }
 }
 
+/* Base styles */
+html, body {
+  height: 100%;
+}
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body), system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  text-rendering: optimizeLegibility;
+}
+
+/* Headings use the serif heading font for a cozy feel */
+h1, h2, h3 {
+  font-family: var(--font-heading), Georgia, "Times New Roman", serif;
+  color: var(--ink);
+}
+
+/* Utility tweaks for nicer defaults */
+a {
+  color: var(--forest);
+}
+a:hover {
+  color: color-mix(in lch, var(--forest) 85%, white);
+}
+
+/* Example container defaults (optional, safe defaults) */
+.container {
+  max-width: 72rem;
+  margin-inline: auto;
+  padding-inline: 1rem;
 }
