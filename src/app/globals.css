@@ -1,48 +1,36 @@
 @import "tailwindcss";
 
-/* Cozy Northumberland cottage theme */
+/* Piggyback Cottage theme */
 :root {
-  /* Base light mode */
-  --background: #faf7f2; /* cream */
-  --foreground: #2a2a2a; /* ink */
+  /* Base colors */
+  --background: #FFFBE7; /* warm cream background (updated) */
+  --foreground: #7A956B; /* olive text (matches your header) */
 
-  /* Palette */
-  --cream: #faf7f2;
-  --forest: #2e5e4e; /* deep green from woodlands */
-  --heather: #7a5c7b; /* purple tones from moorland heather */
-  --slate: #58606b; /* coastal slate/stone */
-  --ink: #2a2a2a;
-  --golden: #c5a572; /* warm brass/amber accents */
+  /* Your actual color palette */
+  --cream: #FFFBE7; /* matches header baseColor (updated) */
+  --forest: #2e5e4e; /* used for text-forest in your pages */
+  --heather: #7a5c7b; /* used for text-heather in your pages */
+  --slate: #58606b; /* used for text-slate in your pages */
+  --golden: #c5a572; /* used for text-golden in your pages */
+  --ink: #2a2a2a; /* pure black for when needed */
+  --muted-sage: #A2B095; /* accent color (updated) */
 }
 
 @theme inline {
-  /* Map CSS vars to Tailwind tokens */
+  /* Map CSS vars to Tailwind tokens - only the colors you actually use */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-cream: var(--cream);
   --color-forest: var(--forest);
   --color-heather: var(--heather);
   --color-slate: var(--slate);
-  --color-ink: var(--ink);
   --color-golden: var(--golden);
+  --color-ink: var(--ink);
+  --color-muted-sage: var(--muted-sage);
 
   /* Typography tokens using next/font variables provided in layout */
   --font-sans: var(--font-body);
   --font-serif: var(--font-heading);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0f1210; /* near-black with green tint */
-    --foreground: #e9e6df; /* warm off-white */
-
-    /* Subtle shifts for dark mode harmony */
-    --forest: #3b7a64;
-    --heather: #9a7aa0;
-    --slate: #8b95a5;
-    --ink: #e9e6df;
-    --golden: #d7b982;
-  }
 }
 
 /* Base styles */
@@ -51,28 +39,227 @@ html, body {
 }
 body {
   background: var(--background);
+  background-attachment: fixed;
   color: var(--foreground);
   font-family: var(--font-body), system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
   text-rendering: optimizeLegibility;
 }
 
+
 /* Headings use the serif heading font for a cozy feel */
 h1, h2, h3 {
   font-family: var(--font-heading), Georgia, "Times New Roman", serif;
-  color: var(--ink);
+  color: var(--foreground); /* Use olive instead of black */
 }
 
 /* Utility tweaks for nicer defaults */
 a {
-  color: var(--forest);
+  color: var(--muted-sage); /* Use your header color */
 }
 a:hover {
-  color: color-mix(in lch, var(--forest) 85%, white);
+  color: color-mix(in lch, var(--muted-sage) 80%, var(--forest));
 }
 
-/* Example container defaults (optional, safe defaults) */
-.container {
-  max-width: 72rem;
-  margin-inline: auto;
-  padding-inline: 1rem;
+/* Swiper customization */
+.cottage-gallery .swiper-button-next,
+.cottage-gallery .swiper-button-prev {
+  color: var(--forest);
+  background: var(--cream);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-top: 0;
+  z-index: 10;
+}
+
+.cottage-gallery .swiper-button-prev {
+  left: -20px;
+}
+
+.cottage-gallery .swiper-button-next {
+  right: -20px;
+}
+
+.cottage-gallery .swiper-button-next:hover,
+.cottage-gallery .swiper-button-prev:hover {
+  background: var(--muted-sage);
+  color: var(--cream);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.cottage-gallery .swiper-button-next::after,
+.cottage-gallery .swiper-button-prev::after {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.cottage-gallery .swiper-pagination-bullet {
+  background: var(--muted-sage);
+  opacity: 0.5;
+  width: 10px;
+  height: 10px;
+}
+
+.cottage-gallery .swiper-pagination-bullet-active {
+  background: var(--forest);
+  opacity: 1;
+}
+
+/* Masonry Gallery Styles */
+.masonry-container {
+  column-count: 2;
+  column-gap: 1rem;
+  column-fill: balance;
+}
+
+@media (min-width: 768px) {
+  .masonry-container {
+    column-count: 3;
+    column-gap: 2rem;
+  }
+}
+
+.masonry-item {
+  break-inside: avoid;
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 1rem;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.masonry-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.masonry-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+/* Legacy Alternating Gallery Styles - 2-1-2-1 Pattern */
+.alternating-gallery {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.gallery-row {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.gallery-row.single-item {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.gallery-row.double-item {
+  width: 100%;
+}
+
+.gallery-item {
+  flex: 1;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  background: var(--cream);
+}
+
+.gallery-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.15), 0 4px 6px -2px rgba(0, 0, 0, 0.08);
+}
+
+.gallery-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  min-height: 300px;
+  max-height: 500px;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .alternating-gallery {
+    padding: 0.5rem;
+    gap: 1rem;
+  }
+  
+  .gallery-row {
+    gap: 0.5rem;
+  }
+  
+  .gallery-row.single-item {
+    max-width: 100%;
+  }
+  
+  .gallery-image {
+    min-height: 250px;
+    max-height: 400px;
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery-row.double-item {
+    flex-direction: column;
+  }
+  
+  .gallery-image {
+    min-height: 200px;
+    max-height: 300px;
+  }
+}
+
+/* Legacy Masonry Styles (keeping for potential future use) */
+.masonry-container {
+  column-count: 2;
+  column-gap: 1rem;
+  column-fill: balance;
+}
+
+@media (min-width: 768px) {
+  .masonry-container {
+    column-count: 3;
+    column-gap: 2rem;
+  }
+}
+
+.masonry-item {
+  break-inside: avoid;
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 1rem;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.masonry-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.masonry-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
 }
