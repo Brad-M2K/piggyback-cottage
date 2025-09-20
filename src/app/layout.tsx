@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Georama } from "next/font/google";
 import "./globals.css";
-import CardNav from "@/components/Layout/Header/Header";
+import CardNav, { type CardNavItem } from "@/components/Layout/Header/Header";
+import Footer from "@/components/Layout/Footer";
 
 
 // Site typography: Georama for headings and body
@@ -11,7 +12,7 @@ const heading = Georama({
   weight: ["400", "600", "700"],
 });
 
-const logo = '/logo.svg'
+const logo = '/logo.svg';
 
 const body = Georama({
   variable: "--font-body",
@@ -35,16 +36,16 @@ export const metadata: Metadata = {
   },
 };
 
-const items = [
+const items: CardNavItem[] = [
     {
       label: "About the Cottage",
       bgColor: "#5E7E6A", // darker sage
       textColor: "var(--background)",
       links: [
-        { label: "Details", ariaLabel: "About Company" },
-        { label: "Pricing", ariaLabel: "About Careers" },
-        { label: "Location", ariaLabel: "About Careers" },
-        { label: "Reviews", ariaLabel: "About Careers" }
+        { label: "Details", href: '#details', ariaLabel: "About Details" },
+        { label: "Pricing", href: '#pricing', ariaLabel: "About Pricing" },
+        { label: "Location", href: '#location', ariaLabel: "About Location" },
+        { label: "Reviews", href: '#reviews', ariaLabel: "About Reviews" }
       ]
     },
     {
@@ -54,7 +55,7 @@ const items = [
       links: [
         { label: "Visit Northumbria Travel Guide", ariaLabel: "Travel Guide", href: 'https://www.visitnorthumberland.com/explore/things-to-do' },
         { label: "Northumbria Interactive map", ariaLabel: "Travel Guide", href: 'https://www.visitnorthumberland.com/travel-tips/while-youre-here/tourist-information-centres?map' },
-        { label: "Local favourites", ariaLabel: "Local favourites" }
+        { label: "Local favourites", href: '#local-favourites', ariaLabel: "Local favourites" }
       ]
     },
     {
@@ -62,8 +63,13 @@ const items = [
       bgColor: "#86A28E", // lightest sage (still darker than background)
       textColor: "var(--background)",
       links: [
-        { label: "Email", ariaLabel: "Email us" },
-        { label: "Instagram", ariaLabel: "Instagram" },
+        { label: "Email", href: 'mailto:stay@piggybackcottage.example', ariaLabel: "Email us" },
+        {
+          label: "Instagram",
+          href: 'https://www.instagram.com/lewisandco_cottages?igsh=N3U0bXZwMDVuMG1z',
+          ariaLabel: "Instagram",
+          icon: 'instagram',
+        },
 
       ]
     }
@@ -93,6 +99,7 @@ export default function RootLayout({
         <main>
           {children}
         </main>
+        <Footer />
       </body>
     </html>
   );

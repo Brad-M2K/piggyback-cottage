@@ -4,12 +4,14 @@
 import React, { useEffect, useLayoutEffect, useRef, useState, useCallback } from "react";
 import { gsap } from "gsap";
 import { GoArrowUpRight } from "react-icons/go"; // use your own icon import if react-icons is not available
+import { Instagram } from "lucide-react";
 /* eslint-disable @next/next/no-img-element */
 
 type CardNavLink = {
     label: string;
-    href: string;
+    href?: string;
     ariaLabel: string;
+    icon?: string;
 };
 
 export type CardNavItem = {
@@ -60,7 +62,7 @@ const CardNav: React.FC<CardNavProps> = ({
     // Keep CTA button visually balanced regardless of header height
     const ctaHeight = Math.max(36, Math.min(topBarHeight - 20, 44));
 
-        const calculateHeight = useCallback(() => {
+    const calculateHeight = useCallback(() => {
         const navEl = navRef.current;
         if (!navEl) return 260;
 
@@ -78,7 +80,7 @@ const CardNav: React.FC<CardNavProps> = ({
                 contentEl.style.pointerEvents = "auto";
                 contentEl.style.position = "static";
                 contentEl.style.height = "auto";
-            void contentEl.offsetHeight; // force reflow
+                void contentEl.offsetHeight; // force reflow
 
                 const topBar = topBarHeight;
                 const padding = 16;
@@ -93,10 +95,10 @@ const CardNav: React.FC<CardNavProps> = ({
                 return topBar + contentHeight + padding;
             }
         }
-            return 260;
-        }, [topBarHeight]);
+        return 260;
+    }, [topBarHeight]);
 
-        const createTimeline = useCallback(() => {
+    const createTimeline = useCallback(() => {
         const navEl = navRef.current;
         if (!navEl) return null;
 
@@ -117,8 +119,8 @@ const CardNav: React.FC<CardNavProps> = ({
             "-=0.1"
         );
 
-            return tl;
-            }, [topBarHeight, ease, calculateHeight]);
+        return tl;
+    }, [topBarHeight, ease, calculateHeight]);
 
     useLayoutEffect(() => {
         const tl = createTimeline();
@@ -127,7 +129,7 @@ const CardNav: React.FC<CardNavProps> = ({
             tl?.kill();
             tlRef.current = null;
         };
-        }, [createTimeline]);
+    }, [createTimeline]);
 
     // Measure how far we need to move the header to fully hide it
     useLayoutEffect(() => {
@@ -193,7 +195,7 @@ const CardNav: React.FC<CardNavProps> = ({
 
         window.addEventListener("resize", handleResize);
         return () => window.removeEventListener("resize", handleResize);
-    }, [isExpanded]);
+    }, [isExpanded, calculateHeight, createTimeline]);
 
     const toggleMenu = () => {
         const tl = tlRef.current;
@@ -217,11 +219,40 @@ const CardNav: React.FC<CardNavProps> = ({
         interface ContainerStyle extends React.CSSProperties {
             "--tw-translate-y"?: string;
         }
-        const containerStyle: ContainerStyle = {
-            "--tw-translate-y": `${hidden && !isExpanded ? -hideOffset : 0}px`,
-        };
+    const containerStyle: ContainerStyle = {
+        "--tw-translate-y": `${hidden && !isExpanded ? -hideOffset : 0}px`,
+    };
+
+    const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
+        instagram: Instagram,
+    };
+
+    const renderLink = (link: CardNavLink) => {
+        const Icon = link.icon ? iconMap[link.icon] ?? GoArrowUpRight : GoArrowUpRight;
+
+        if (!link.href) {
+            return (
+                <span className="nav-card-link inline-flex items-center gap-[6px] text-[15px] md:text-[16px] opacity-70">
+                    <Icon className="nav-card-link-icon shrink-0" aria-hidden="true" />
+                    {link.label}
+                </span>
+            );
+        }
 
         return (
+            <a
+                className="nav-card-link inline-flex items-center gap-[6px] no-underline cursor-pointer transition-opacity duration-300 hover:opacity-75 text-[15px] md:text-[16px]"
+                href={link.href}
+                aria-label={link.ariaLabel}
+                style={{ color: "inherit" }}
+            >
+                <Icon className="nav-card-link-icon shrink-0" aria-hidden="true" />
+                {link.label}
+            </a>
+        );
+    };
+
+    return (
         <div
             ref={containerRef}
             className={`card-nav-container fixed left-1/2 -translate-x-1/2 w-[90%] max-w-[900px] z-[9999] top-[0.6em] md:top-[0.8em] transition-transform duration-300 will-change-transform transform-gpu ${className}`}
@@ -292,17 +323,10 @@ const CardNav: React.FC<CardNavProps> = ({
                                 {item.label}
                             </div>
                             <div className="nav-card-links mt-auto flex flex-col gap-[2px]">
-                                {item.links?.map((lnk, i) => (
-                                    <a
-                                        key={`${lnk.label}-${i}`}
-                                        className="nav-card-link inline-flex items-center gap-[6px] no-underline cursor-pointer transition-opacity duration-300 hover:opacity-75 text-[15px] md:text-[16px]"
-                                        href={lnk.href}
-                                        aria-label={lnk.ariaLabel}
-                                        style={{ color: item.textColor }}
-                                    >
-                                        <GoArrowUpRight className="nav-card-link-icon shrink-0" aria-hidden="true" />
-                                        {lnk.label}
-                                    </a>
+                                {item.links?.map((lnk) => (
+                                    <span key={lnk.label} style={{ color: item.textColor }}>
+                                        {renderLink(lnk)}
+                                    </span>
                                 ))}
                             </div>
                         </div>

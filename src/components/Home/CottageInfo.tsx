@@ -50,7 +50,7 @@ export default function CottageInfo() {
             {/* Nearby Places */}
             <div className="bg-gradient-to-br from-heather/5 to-golden/10 rounded-3xl p-8 md:p-12">
                 <h3 className="text-2xl md:text-3xl font-serif text-forest mb-8 text-center">
-                    What's Nearby?
+                    What&apos;s Nearby?
                 </h3>
                 
                 <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
