@@ -1,4 +1,3 @@
-// @ts-ignore
 import EffectMaterialJS from './effect-material.esm.js';
 
 export interface MaterialEffectOptions {
@@ -7,9 +6,9 @@ export interface MaterialEffectOptions {
 
 export interface SwiperModule {
   (options: {
-    swiper: any;
-    on: (event: string, callback: (...args: any[]) => void) => void;
-    extendParams: (params: any) => void;
+    swiper: unknown;
+    on: (event: string, callback: (...args: unknown[]) => void) => void;
+    extendParams: (params: Record<string, unknown>) => void;
   }): void;
 }
 
