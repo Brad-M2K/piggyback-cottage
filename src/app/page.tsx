@@ -10,14 +10,43 @@ const allowedImageExts = new Set(['.jpg', '.jpeg', '.png', '.webp', '.gif', '.av
 function getPublicImages() {
   const publicDir = path.join(process.cwd(), 'public', 'AVAs Pics');
   const entries = fs.readdirSync(publicDir, { withFileTypes: true });
-  return entries
+  
+  // Define preferred order for property showcase
+  const preferredOrder = [
+    // Start with best exterior shots
+    'exterior-1.jpeg', 'exterior-2.jpeg', 'exterior-3.jpeg', 'exterior-4.jpeg', 'exterior-5.jpeg',
+    // Main living areas
+    'living-room-1.jpeg', 'living-room-2.jpeg', 'living-room-3.jpeg',
+    'kitchen-1.jpeg', 'kitchen-2.jpeg',
+    // Bedrooms
+    'master-bedroom-1.jpeg', 'master-bedroom-2.jpeg', 'master-bedroom-3.jpeg', 'master-bedroom-4.jpeg',
+    'single-spare-1.jpeg', 'single-spare-2.jpeg', 'single-spare-3.jpeg', 'single-spare-4.jpeg', 'single-spare-5.jpeg', 'single-spare-6.jpeg',
+    'spare-double-1.jpeg',
+    // Bathrooms
+    'shared-bathroom-1.jpeg', 'shared-bathroom-2.jpeg', 'shared-bathroom-3.jpeg',
+    'spare-double-bathroom-1.jpeg', 'toilet-1.jpeg',
+    // Outdoor spaces
+    'garden-chairs-2.jpeg', 'garden-chars-1.jpeg', 'garden-table-1.jpeg',
+    'shop-hut-1.jpeg', 'shop-hut-2.jpeg', 'shop-hut-3.jpeg', 'shop-hut-4.jpeg', 'shop-hut-5.jpeg',
+    // Local attractions last
+    'castle-1.jpeg', 'castle-2.jpeg', 'castle-river.jpeg', 'church-1.jpeg',
+    'amenities-1.jpeg'
+  ];
+  
+  const imageFiles = entries
     .filter((e) => e.isFile() && allowedImageExts.has(path.extname(e.name).toLowerCase()))
-    .map((e) => {
-      const nameNoExt = e.name.replace(/\.[^/.]+$/, '');
-      const alt = nameNoExt.replace(/[-_]+/g, ' ');
-      const src = `/AVAs%20Pics/${encodeURI(e.name)}`; // handle spaces and special chars
-      return { src, alt };
-    });
+    .map((e) => e.name);
+  
+  // Sort images according to preferred order, with any unlisted files at the end
+  const sortedFiles = [...preferredOrder.filter(f => imageFiles.includes(f)), 
+                      ...imageFiles.filter(f => !preferredOrder.includes(f))];
+  
+  return sortedFiles.map((filename) => {
+    const nameNoExt = filename.replace(/\.[^/.]+$/, '');
+    const alt = nameNoExt.replace(/[-_]+/g, ' ');
+    const src = `/AVAs%20Pics/${encodeURI(filename)}`; // handle spaces and special chars
+    return { src, alt };
+  });
 }
 
 const images = getPublicImages();
