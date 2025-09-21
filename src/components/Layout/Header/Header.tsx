@@ -4,7 +4,7 @@
 import React, { useEffect, useLayoutEffect, useRef, useState, useCallback } from "react";
 import { gsap } from "gsap";
 import { GoArrowUpRight } from "react-icons/go"; // use your own icon import if react-icons is not available
-import { Instagram } from "lucide-react";
+import { Instagram, Mail } from "lucide-react";
 /* eslint-disable @next/next/no-img-element */
 
 type CardNavLink = {
@@ -66,36 +66,32 @@ const CardNav: React.FC<CardNavProps> = ({
         const navEl = navRef.current;
         if (!navEl) return 260;
 
-        const isMobile = window.matchMedia("(max-width: 768px)").matches;
-        if (isMobile) {
-            const contentEl = navEl.querySelector(".card-nav-content") as HTMLElement;
-            if (contentEl) {
-                const wasVisible = contentEl.style.visibility;
-                const wasPointerEvents = contentEl.style.pointerEvents;
-                const wasPosition = contentEl.style.position;
-                const wasHeight = contentEl.style.height;
-
-                // Temporarily reveal for measurement
-                contentEl.style.visibility = "visible";
-                contentEl.style.pointerEvents = "auto";
-                contentEl.style.position = "static";
-                contentEl.style.height = "auto";
-                void contentEl.offsetHeight; // force reflow
-
-                const topBar = topBarHeight;
-                const padding = 16;
-                const contentHeight = contentEl.scrollHeight;
-
-                // Restore original styles
-                contentEl.style.visibility = wasVisible;
-                contentEl.style.pointerEvents = wasPointerEvents;
-                contentEl.style.position = wasPosition;
-                contentEl.style.height = wasHeight;
-
-                return topBar + contentHeight + padding;
-            }
+        const contentEl = navEl.querySelector('.card-nav-content') as HTMLElement | null;
+        if (!contentEl) {
+            return 260;
         }
-        return 260;
+
+        const wasVisible = contentEl.style.visibility;
+        const wasPointerEvents = contentEl.style.pointerEvents;
+        const wasPosition = contentEl.style.position;
+        const wasHeight = contentEl.style.height;
+
+        contentEl.style.visibility = 'visible';
+        contentEl.style.pointerEvents = 'auto';
+        contentEl.style.position = 'static';
+        contentEl.style.height = 'auto';
+        void contentEl.offsetHeight;
+
+        const topBar = topBarHeight;
+        const padding = 24;
+        const contentHeight = contentEl.scrollHeight;
+
+        contentEl.style.visibility = wasVisible;
+        contentEl.style.pointerEvents = wasPointerEvents;
+        contentEl.style.position = wasPosition;
+        contentEl.style.height = wasHeight;
+
+        return Math.max(topBar + contentHeight + padding, 260);
     }, [topBarHeight]);
 
     const createTimeline = useCallback(() => {
@@ -173,6 +169,31 @@ const CardNav: React.FC<CardNavProps> = ({
         return () => window.removeEventListener("scroll", onScroll);
     }, [isExpanded]);
 
+    const closeMenu = useCallback(() => {
+        if (!isExpanded) return;
+        const tl = tlRef.current;
+        if (!tl) return;
+
+        setIsHamburgerOpen(false);
+        tl.eventCallback('onReverseComplete', () => {
+            setIsExpanded(false);
+            tl.eventCallback('onReverseComplete', null);
+        });
+        tl.reverse();
+    }, [isExpanded]);
+
+    const toggleMenu = () => {
+        const tl = tlRef.current;
+        if (!tl) return;
+        if (!isExpanded) {
+            setIsHamburgerOpen(true);
+            setIsExpanded(true);
+            tl.play(0);
+        } else {
+            closeMenu();
+        }
+    };
+
     useLayoutEffect(() => {
         const handleResize = () => {
             if (!tlRef.current) return;
@@ -197,57 +218,108 @@ const CardNav: React.FC<CardNavProps> = ({
         return () => window.removeEventListener("resize", handleResize);
     }, [isExpanded, calculateHeight, createTimeline]);
 
-    const toggleMenu = () => {
-        const tl = tlRef.current;
-        if (!tl) return;
-        if (!isExpanded) {
-            setIsHamburgerOpen(true);
-            setIsExpanded(true);
-            tl.play(0);
-        } else {
-            setIsHamburgerOpen(false);
-            tl.eventCallback("onReverseComplete", () => setIsExpanded(false));
-            tl.reverse();
-        }
-    };
+    useEffect(() => {
+        if (!isExpanded) return;
+
+        const handlePointerDown = (event: PointerEvent) => {
+            const container = containerRef.current;
+            if (!container) return;
+            if (container.contains(event.target as Node)) {
+                return;
+            }
+            closeMenu();
+        };
+
+        window.addEventListener('pointerdown', handlePointerDown);
+        return () => window.removeEventListener('pointerdown', handlePointerDown);
+    }, [isExpanded, closeMenu]);
 
     const setCardRef = (i: number) => (el: HTMLDivElement | null) => {
         if (el) cardsRef.current[i] = el;
     };
 
-        // CSS variable style for Tailwind translate Y
-        interface ContainerStyle extends React.CSSProperties {
-            "--tw-translate-y"?: string;
-        }
+    // CSS variable style for Tailwind translate Y
+    interface ContainerStyle extends React.CSSProperties {
+        "--tw-translate-y"?: string;
+    }
     const containerStyle: ContainerStyle = {
         "--tw-translate-y": `${hidden && !isExpanded ? -hideOffset : 0}px`,
     };
 
     const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
         instagram: Instagram,
+        email: Mail,
     };
 
     const renderLink = (link: CardNavLink) => {
         const Icon = link.icon ? iconMap[link.icon] ?? GoArrowUpRight : GoArrowUpRight;
 
+        const anchorAttributes = link.href && link.href.startsWith('http')
+            ? { target: '_blank', rel: 'noopener noreferrer' as const }
+            : {};
+
         if (!link.href) {
             return (
-                <span className="nav-card-link inline-flex items-center gap-[6px] text-[15px] md:text-[16px] opacity-70">
+                <button
+                    type="button"
+                    className="nav-card-link inline-flex items-center gap-[6px] text-[15px] md:text-[16px] opacity-70 cursor-not-allowed"
+                    aria-label={link.ariaLabel}
+                    disabled
+                >
                     <Icon className="nav-card-link-icon shrink-0" aria-hidden="true" />
                     {link.label}
-                </span>
+                </button>
             );
         }
 
+        const handleClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
+            if (!link.href) {
+                return;
+            }
+
+            const anchor = event.currentTarget;
+
+            if (!link.href.startsWith('http')) {
+                closeMenu();
+                return;
+            }
+
+            anchor.setAttribute('aria-busy', 'true');
+            anchor.classList.add('loading');
+
+            const opened = window.open(link.href, '_blank', 'noopener,noreferrer');
+
+            if (!opened) {
+                anchor.removeAttribute('aria-busy');
+                anchor.classList.remove('loading');
+                closeMenu();
+                return;
+            }
+
+            event.preventDefault();
+
+            closeMenu();
+
+            window.requestAnimationFrame(() => {
+                setTimeout(() => {
+                    anchor.removeAttribute('aria-busy');
+                    anchor.classList.remove('loading');
+                }, 1200);
+            });
+        };
+
         return (
             <a
-                className="nav-card-link inline-flex items-center gap-[6px] no-underline cursor-pointer transition-opacity duration-300 hover:opacity-75 text-[15px] md:text-[16px]"
+                className="nav-card-link inline-flex items-center gap-[6px] no-underline cursor-pointer transition-opacity duration-300 hover:opacity-75 text-[15px] md:text-[16px] relative"
                 href={link.href}
                 aria-label={link.ariaLabel}
                 style={{ color: "inherit" }}
+                onClick={handleClick}
+                {...anchorAttributes}
             >
                 <Icon className="nav-card-link-icon shrink-0" aria-hidden="true" />
-                {link.label}
+                <span>{link.label}</span>
+                <span className="loading-text ml-2 text-xs text-current">Loading…</span>
             </a>
         );
     };
@@ -288,12 +360,21 @@ const CardNav: React.FC<CardNavProps> = ({
                     </div>
 
                     <div className="logo-container flex items-center justify-center md:absolute md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2 order-1 md:order-none">
-                        <img
-                            src={logo}
-                            alt={logoAlt}
-                            className="logo"
-                            style={{ height: Math.max(topBarHeight - 16, 0), width: "auto" }}
-                        />
+                        <button
+                            type="button"
+                            className="logo focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest"
+                            onClick={() => {
+                                window.location.href = '/';
+                            }}
+                            aria-label="Go to homepage"
+                            style={{ height: Math.max(topBarHeight - 16, 0) }}
+                        >
+                            <img
+                                src={logo}
+                                alt={logoAlt}
+                                style={{ height: '100%', width: 'auto' }}
+                            />
+                        </button>
                     </div>
 
                     <button

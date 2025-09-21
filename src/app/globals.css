@@ -8,7 +8,7 @@
 
   /* Your actual color palette */
   --cream: #FFFBE7; /* matches header baseColor (updated) */
-  --forest: #2e5e4e; /* used for text-forest in your pages */
+  --forest: hsl(160, 34%, 27%); /* used for text-forest in your pages */
   --heather: #7a5c7b; /* used for text-heather in your pages */
   --slate: #58606b; /* used for text-slate in your pages */
   --golden: #c5a572; /* used for text-golden in your pages */
@@ -36,6 +36,9 @@
 /* Base styles */
 html, body {
   height: 100%;
+}
+html {
+  scroll-behavior: smooth;
 }
 body {
   background: var(--background);
@@ -65,71 +68,12 @@ a:hover {
   filter: drop-shadow(0 8px 12px rgba(0,0,0,0.15));
 }
 
-/* Mobile responsiveness */
-@media (max-width: 768px) {
-  .alternating-gallery {
-    padding: 0.5rem;
-    gap: 1rem;
-  }
-  
-  .gallery-row {
-    gap: 0.5rem;
-  }
-  
-  .gallery-row.single-item {
-    max-width: 100%;
-  }
-  
-  .gallery-image {
-    min-height: 250px;
-    max-height: 400px;
-  }
+.nav-card-link .loading-text {
+  opacity: 0;
+  transition: opacity 0.2s ease;
 }
 
-@media (max-width: 480px) {
-  .gallery-row.double-item {
-    flex-direction: column;
-  }
-  
-  .gallery-image {
-    min-height: 200px;
-    max-height: 300px;
-  }
-}
-
-/* Legacy Masonry Styles (keeping for potential future use) */
-.masonry-container {
-  column-count: 2;
-  column-gap: 1rem;
-  column-fill: balance;
-}
-
-@media (min-width: 768px) {
-  .masonry-container {
-    column-count: 3;
-    column-gap: 2rem;
-  }
-}
-
-.masonry-item {
-  break-inside: avoid;
-  display: inline-block;
-  width: 100%;
-  margin-bottom: 1rem;
-  border-radius: 0.75rem;
-  overflow: hidden;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.masonry-item:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-}
-
-.masonry-image {
-  width: 100%;
-  height: auto;
-  display: block;
-  object-fit: cover;
+.nav-card-link.loading .loading-text,
+.nav-card-link[aria-busy="true"] .loading-text {
+  opacity: 1;
 }

@@ -92,7 +92,7 @@ export default function MaterialLightbox({
 
     return (
         <div
-            className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/90 px-2 py-4 sm:p-6"
+            className="fixed inset-0 z-[9999] flex items-center justify-center bg-gray-400/60 px-2 py-4 sm:p-6"
             role="dialog"
             aria-modal="true"
             onClick={(event) => {
@@ -105,7 +105,7 @@ export default function MaterialLightbox({
         >
             <button
                 type="button"
-                className="absolute top-4 right-4 hidden rounded-full bg-black/60 px-4 py-2 text-sm font-semibold text-cream transition hover:bg-black/80 sm:block"
+                className="absolute top-4 right-4 hidden rounded-full bg-gray-600/60 px-4 py-2 text-sm font-semibold text-cream transition hover:bg-black/80 sm:block"
                 onClick={(event) => {
                     event.stopPropagation();
                     onClose();
@@ -119,7 +119,7 @@ export default function MaterialLightbox({
                 <>
                     <button
                         type="button"
-                        className="absolute left-2 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-black/60 text-cream transition hover:bg-black/80 sm:left-4 sm:h-12 sm:w-12"
+                        className="absolute left-2 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-gray-600/60 text-cream transition hover:bg-black/80 sm:left-4 sm:h-12 sm:w-12"
                         onClick={handlePrev}
                         aria-label="Previous image"
                     >
@@ -127,7 +127,7 @@ export default function MaterialLightbox({
                     </button>
                     <button
                         type="button"
-                        className="absolute right-2 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-black/60 text-cream transition hover:bg-black/80 sm:right-4 sm:h-12 sm:w-12"
+                        className="absolute right-2 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-gray-600/60 text-cream transition hover:bg-black/80 sm:right-4 sm:h-12 sm:w-12"
                         onClick={handleNext}
                         aria-label="Next image"
                     >
@@ -204,7 +204,7 @@ export default function MaterialLightbox({
 
                 <button
                     type="button"
-                    className="w-full rounded-full bg-black/60 px-4 py-3 text-center text-sm font-semibold text-cream transition hover:bg-black/80 sm:hidden"
+                    className="w-full rounded-full bg-gray-600/60 px-4 py-3 text-center text-sm font-semibold text-cream transition hover:bg-black/80 sm:hidden"
                     onClick={(event) => {
                         event.stopPropagation();
                         onClose();

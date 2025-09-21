@@ -1,4 +1,4 @@
-import { MapPin, Users, Bed, Bath, Wifi, Car, Coffee, Heart } from 'lucide-react';
+import { MapPin, Users, Bed, Bath, Wifi, Car, Coffee, Heart, ShieldCheck } from 'lucide-react';
 import HighlightSection from './Description/HighlightSection';
 import KeyFactsGrid from './Description/KeyFactsGrid';
 import WelcomeBanner from './Description/WelcomeBanner';
@@ -17,36 +17,43 @@ const KEY_FACTS = [
     {
         icon: Bath,
         value: '2',
-        label: 'Bathrooms',
+        label: 'Bathrooms & WCs',
     },
     {
         icon: Heart,
-        value: 'Dog',
-        label: 'Friendly',
+        value: 'Dogs',
+        label: 'Welcome (2)',
         iconColor: 'text-heather',
         valueColor: 'text-heather',
+    },
+    {
+        icon: ShieldCheck,
+        value: 'Secure',
+        label: 'Enclosed Patios',
+        iconColor: 'text-forest',
+        valueColor: 'text-forest',
     },
 ];
 
 const ACCOMMODATION_HIGHLIGHTS = [
     {
         icon: Bed,
-        title: 'Master Bedroom',
-        description: 'Downstairs with king-size bed and large shower en-suite',
+        title: 'Ground-floor Master',
+        description: 'King bed with generous en-suite shower and TV — perfect if dogs stay downstairs',
         iconColor: 'text-heather',
         background: 'bg-heather/5',
     },
     {
         icon: Bath,
-        title: 'Luxurious Bath',
-        description: 'Beautiful roll-top bath and shower upstairs',
+        title: 'Roll-top Sanctuary',
+        description: 'Upstairs bathroom with statement roll-top bath, separate shower and WC',
         iconColor: 'text-golden',
         background: 'bg-golden/10',
     },
     {
         icon: Wifi,
-        title: 'Modern Amenities',
-        description: 'All bedrooms fitted with TVs, log-burning stove',
+        title: 'Cosy & Considered',
+        description: 'Log-burning stove, TVs in every bedroom, welcome hamper, toiletries and starter logs/coffee',
         iconColor: 'text-forest',
         background: 'bg-forest/5',
     },
@@ -56,21 +63,21 @@ const LOCATION_HIGHLIGHTS = [
     {
         icon: MapPin,
         title: 'Alnmouth Village',
-        description: '10 minutes • Wildlife, beaches, pubs & shops',
+        description: '10 minutes • Colourful coastal village with beach, cafés and wildlife',
         iconColor: 'text-heather',
         background: 'bg-heather/5',
     },
     {
         icon: Car,
         title: 'Historic Alnwick',
-        description: '15 minutes • Alnwick Castle & Gardens',
+        description: '15 minutes • Alnwick Castle, Gardens and larger supermarkets',
         iconColor: 'text-golden',
         background: 'bg-golden/10',
     },
     {
         icon: Coffee,
         title: 'Warkworth Village',
-        description: 'On your doorstep • Pubs, restaurants & shops',
+        description: 'On the doorstep • Pubs, restaurants, jewellers, chocolatiers and art gallery',
         iconColor: 'text-forest',
         background: 'bg-forest/5',
     },
@@ -82,9 +89,9 @@ export default function Description() {
             <KeyFactsGrid facts={KEY_FACTS} />
 
             <WelcomeBanner title="A Cosy Retreat in Medieval Warkworth">
-                Beautifully renovated cottage nestled within the picturesque medieval village of Warkworth, in an
-                Area of Outstanding Natural Beauty. With stunning views to the castle and pretty beach dunes, this is
-                your perfect home away from home to relax and unwind.
+                Piggyback Cottage is a beautifully renovated, extremely cosy home nestled beneath Warkworth Castle in
+                an Area of Outstanding Natural Beauty. Wake to views of the dunes and sea beyond, light the stove after
+                a windswept walk, and unwind knowing every thoughtful detail has been taken care of.
             </WelcomeBanner>
 
             <div className="grid md:grid-cols-2 gap-12">

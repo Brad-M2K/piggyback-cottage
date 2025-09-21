@@ -14,7 +14,7 @@ interface KeyFactsGridProps {
 
 export default function KeyFactsGrid({ facts }: KeyFactsGridProps) {
     return (
-        <div className="grid md:grid-cols-4 gap-6 pt-14">
+        <div className="grid gap-6 pt-14 sm:grid-cols-2 lg:grid-cols-5">
             {facts.map((fact) => (
                 <div
                     key={fact.label}

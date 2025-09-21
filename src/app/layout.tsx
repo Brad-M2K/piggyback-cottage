@@ -23,6 +23,9 @@ const body = Georama({
 export const metadata: Metadata = {
   title: "Piggyback Cottage B&B",
   description: "A cozy Northumberland getaway — bed & breakfast by the moors.",
+  formatDetection: {
+    telephone: false,
+  },
   openGraph: {
     type: 'website',
     title: "Piggyback Cottage B&B",
@@ -42,10 +45,10 @@ const items: CardNavItem[] = [
       bgColor: "#5E7E6A", // darker sage
       textColor: "var(--background)",
       links: [
-        { label: "Details", href: '#details', ariaLabel: "About Details" },
-        { label: "Pricing", href: '#pricing', ariaLabel: "About Pricing" },
-        { label: "Location", href: '#location', ariaLabel: "About Location" },
-        { label: "Reviews", href: '#reviews', ariaLabel: "About Reviews" }
+        { label: "Overview", href: '#details', ariaLabel: "Cottage overview" },
+        { label: "Stay Info & Rates", href: '#pricing', ariaLabel: "Cottage pricing" },
+        { label: "Gallery", href: '#gallery', ariaLabel: "Cottage gallery" },
+        { label: "Reviews", href: '#reviews', ariaLabel: "Guest reviews" }
       ]
     },
     {
@@ -55,7 +58,8 @@ const items: CardNavItem[] = [
       links: [
         { label: "Visit Northumbria Travel Guide", ariaLabel: "Travel Guide", href: 'https://www.visitnorthumberland.com/explore/things-to-do' },
         { label: "Northumbria Interactive map", ariaLabel: "Travel Guide", href: 'https://www.visitnorthumberland.com/travel-tips/while-youre-here/tourist-information-centres?map' },
-        { label: "Local favourites", href: '#local-favourites', ariaLabel: "Local favourites" }
+        { label: "Local favourites", href: '#local-favourites', ariaLabel: "Local favourites" },
+        { label: "Experience", href: '#experience-heading', ariaLabel: "Northumberland experience" }
       ]
     },
     {
@@ -63,7 +67,7 @@ const items: CardNavItem[] = [
       bgColor: "#86A28E", // lightest sage (still darker than background)
       textColor: "var(--background)",
       links: [
-        { label: "Email", href: 'mailto:stay@piggybackcottage.example', ariaLabel: "Email us" },
+        { label: "Email", href: 'mailto:stay@piggybackcottage.example', ariaLabel: "Email us", icon: 'email' },
         {
           label: "Instagram",
           href: 'https://www.instagram.com/lewisandco_cottages?igsh=N3U0bXZwMDVuMG1z',

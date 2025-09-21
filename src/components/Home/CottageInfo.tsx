@@ -9,8 +9,8 @@ export default function CottageInfo() {
                     Explore Northumberland
                 </h2>
                 <p className="text-slate text-lg max-w-3xl mx-auto">
-                    Step out to riverbank paths along the River Coquet, vast Warkworth beach, 
-                    and endless countryside adventures.
+                    Step out to riverbank paths along the River Coquet, the vast Warkworth beach and endless
+                    countryside adventures — idyllic for walkers and four-legged companions alike.
                 </p>
                 
                 {/* Activities Grid */}
@@ -65,7 +65,7 @@ export default function CottageInfo() {
                             <span className="text-sm text-slate">10 minutes</span>
                         </div>
                         <p className="text-slate text-sm">
-                            Colorful village with tranquil beach, charming pubs, cafés & unique shops
+                            Colourful village with tranquil beach, charming pubs, cafés & independent shops
                         </p>
                     </div>
 
@@ -95,7 +95,7 @@ export default function CottageInfo() {
                             <span className="text-sm text-slate">40 min walk</span>
                         </div>
                         <p className="text-slate text-sm">
-                            Charming harbor town with waterfront dining and independent shops
+                            Coastal town with harbour market, seafood shacks and waterfront dining • 40 min walk/short drive
                         </p>
                     </div>
 
