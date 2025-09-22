@@ -81,8 +81,8 @@ export default function Home() {
                         </div>
                         <div className="rounded-2xl bg-white/70 p-5 shadow-sm">
                             <p className="font-semibold text-forest mb-2">Extras</p>
-                            <p>Up to two well-behaved medium dogs are welcome (£30 per stay). Village EV charging and mid-stay
-                                cleans available on request.</p>
+                            <p>Up to two well-behaved medium dogs are welcome (£30 per stay). EV charging available in the
+                                village.</p>
                         </div>
                         <div className="rounded-2xl bg-white/70 p-5 shadow-sm">
                             <p className="font-semibold text-forest mb-2">Book Direct</p>
