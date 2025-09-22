@@ -17,7 +17,7 @@ const KEY_FACTS = [
     {
         icon: Bath,
         value: '2',
-        label: 'Bathrooms & WCs',
+        label: 'Bathrooms & 3 WCs',
     },
     {
         icon: Heart,
