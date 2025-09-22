@@ -67,10 +67,10 @@ export default function Home() {
                     className="scroll-mt-32 rounded-3xl border border-muted-sage/30 bg-cream/60 backdrop-blur py-10 px-8 space-y-6"
                 >
                     <div className="space-y-2 text-center md:text-left">
-                        <h2 className="text-2xl md:text-3xl font-serif text-forest">Stay Information & Rates</h2>
+                        <h2 className="text-2xl md:text-3xl font-serif text-forest">Stay Information</h2>
                         <p className="text-slate text-base leading-relaxed">
                             Piggyback Cottage sleeps five guests across three bedrooms with two bathrooms and two WCs.
-                            Pricing is provided on enquiry. A small welcome pack, luxury linens, toiletries, and a starter
+                            Rates vary by season and are available on enquiry. A small welcome pack, luxury linens, toiletries, and a starter
                             bundle of logs, tea and coffee are all included.
                     </p>
                     </div>
