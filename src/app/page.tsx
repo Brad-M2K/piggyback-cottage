@@ -70,10 +70,9 @@ export default function Home() {
                         <h2 className="text-2xl md:text-3xl font-serif text-forest">Stay Information & Rates</h2>
                         <p className="text-slate text-base leading-relaxed">
                             Piggyback Cottage sleeps five guests across three bedrooms with two bathrooms and two WCs.
-                            Pricing is provided on enquiry (typically £150–£220 per night depending on season). A small
-                            welcome pack, luxury linens, toiletries, and a starter bundle of logs, tea and coffee are all
-                            included.
-                        </p>
+                            Pricing is provided on enquiry. A small welcome pack, luxury linens, toiletries, and a starter
+                            bundle of logs, tea and coffee are all included.
+                    </p>
                     </div>
                     <div className="grid gap-4 text-sm text-slate md:grid-cols-3">
                         <div className="rounded-2xl bg-white/70 p-5 shadow-sm">
@@ -82,8 +81,8 @@ export default function Home() {
                         </div>
                         <div className="rounded-2xl bg-white/70 p-5 shadow-sm">
                             <p className="font-semibold text-forest mb-2">Extras</p>
-                            <p>Up to two well-behaved medium dogs are welcome (£30 per stay). EV charging and mid-stay cleans
-                                available on request.</p>
+                            <p>Up to two well-behaved medium dogs are welcome (£30 per stay). Village EV charging and mid-stay
+                                cleans available on request.</p>
                         </div>
                         <div className="rounded-2xl bg-white/70 p-5 shadow-sm">
                             <p className="font-semibold text-forest mb-2">Book Direct</p>

@@ -1,4 +1,4 @@
-import { MapPin, Users, Bed, Bath, Wifi, Car, Coffee, Heart, ShieldCheck } from 'lucide-react';
+import { MapPin, Users, Bed, Bath, Wifi, Car, Coffee, Heart, ShieldCheck, Home } from 'lucide-react';
 import HighlightSection from './Description/HighlightSection';
 import KeyFactsGrid from './Description/KeyFactsGrid';
 import WelcomeBanner from './Description/WelcomeBanner';
@@ -37,25 +37,30 @@ const KEY_FACTS = [
 
 const ACCOMMODATION_HIGHLIGHTS = [
     {
-        icon: Bed,
-        title: 'Ground-floor Master',
-        description: 'King bed with generous en-suite shower and TV — perfect if dogs stay downstairs',
-        iconColor: 'text-heather',
-        background: 'bg-heather/5',
+        icon: Home,
+        title: 'Downstairs Spaces',
+        description:
+            'Enclosed patio, downstairs WC, utility with washing machine, kitchen-diner, lounge with log-burning stove and master bedroom with generous en-suite shower.',
+        iconColor: 'text-forest',
+        background: 'bg-forest/5',
+        iconBackground: 'bg-forest/10',
     },
     {
-        icon: Bath,
-        title: 'Roll-top Sanctuary',
-        description: 'Upstairs bathroom with statement roll-top bath, separate shower and WC',
-        iconColor: 'text-golden',
-        background: 'bg-golden/10',
+        icon: Bed,
+        title: 'Upstairs',
+        description:
+            'Roll-top bathroom with separate shower & WC, a single bedroom, and an extra-large king bedroom — each with beautiful views of countryside, castle and sea.',
+        iconColor: 'text-heather',
+        background: 'bg-heather/5',
+        iconBackground: 'bg-heather/10',
     },
     {
         icon: Wifi,
         title: 'Cosy & Considered',
-        description: 'Log-burning stove, TVs in every bedroom, welcome hamper, toiletries and starter logs/coffee',
-        iconColor: 'text-forest',
-        background: 'bg-forest/5',
+        description: 'Log-burning stove, ambient lighting, welcome hamper, toiletries, and a starter bundle of logs, tea and coffee.',
+        iconColor: 'text-golden',
+        background: 'bg-golden/10',
+        iconBackground: 'bg-golden/10',
     },
 ];
 
@@ -66,6 +71,7 @@ const LOCATION_HIGHLIGHTS = [
         description: '10 minutes • Colourful coastal village with beach, cafés and wildlife',
         iconColor: 'text-heather',
         background: 'bg-heather/5',
+        iconBackground: 'bg-heather/10',
     },
     {
         icon: Car,
@@ -73,6 +79,7 @@ const LOCATION_HIGHLIGHTS = [
         description: '15 minutes • Alnwick Castle, Gardens and larger supermarkets',
         iconColor: 'text-golden',
         background: 'bg-golden/10',
+        iconBackground: 'bg-golden/10',
     },
     {
         icon: Coffee,
@@ -80,6 +87,7 @@ const LOCATION_HIGHLIGHTS = [
         description: 'On the doorstep • Pubs, restaurants, jewellers, chocolatiers and art gallery',
         iconColor: 'text-forest',
         background: 'bg-forest/5',
+        iconBackground: 'bg-forest/10',
     },
 ];
 

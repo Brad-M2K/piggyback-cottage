@@ -22,20 +22,20 @@ const body = Georama({
 
 export const metadata: Metadata = {
   title: "Piggyback Cottage B&B",
-  description: "A cozy Northumberland getaway — bed & breakfast by the moors.",
+  description: "A cozy coastal Northumberland getaway.",
   formatDetection: {
     telephone: false,
   },
   openGraph: {
     type: 'website',
     title: "Piggyback Cottage B&B",
-    description: "A cozy Northumberland getaway — bed & breakfast by the moors.",
+    description: "A cozy coastal Northumberland getaway.",
     siteName: "Piggyback Cottage",
   },
   twitter: {
     card: 'summary_large_image',
     title: "Piggyback Cottage B&B",
-    description: "A cozy Northumberland getaway — bed & breakfast by the moors.",
+    description: "A cozy coastal Northumberland getaway.",
   },
 };
 

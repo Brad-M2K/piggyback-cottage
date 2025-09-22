@@ -23,7 +23,9 @@ export default function HighlightSection({ title, items }: HighlightSectionProps
                         key={item.title}
                         className={`flex items-start gap-4 p-4 rounded-xl shadow-sm ${item.background}`}
                     >
-                        <item.icon className={`w-6 h-6 mt-1 ${item.iconColor}`} />
+                        <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center">
+                            <item.icon className={`h-8 w-8 ${item.iconColor}`} />
+                        </div>
                         <div>
                             <p className="font-semibold text-forest">{item.title}</p>
                             <p className="text-slate text-sm">{item.description}</p>

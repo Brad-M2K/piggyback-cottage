@@ -18,11 +18,11 @@ export default function KeyFactsGrid({ facts }: KeyFactsGridProps) {
             {facts.map((fact) => (
                 <div
                     key={fact.label}
-                    className="bg-cream/60 rounded-2xl p-4 md:p-6 backdrop-blur-sm border border-muted-sage/10"
+                    className="bg-cream/60 rounded-2xl px-6 py-4 md:p-6 backdrop-blur-sm border border-muted-sage/10"
                 >
-                    <div className="flex items-center justify-center gap-3 md:flex-col md:text-center md:gap-0">
+                    <div className="flex items-center gap-3 pl-22 md:pl-0 md:flex-col md:items-center md:text-center md:gap-1">
                         <fact.icon
-                            className={`w-8 h-8 flex-shrink-0 md:mx-auto md:mb-2 ${fact.iconColor ?? 'text-forest'}`}
+                            className={`w-8 h-8 flex-shrink-0 ${fact.iconColor ?? 'text-forest'}`}
                         />
                         <div className="flex flex-col text-left md:text-center">
                             <p className={`text-2xl font-bold leading-tight ${fact.valueColor ?? 'text-forest'}`}>

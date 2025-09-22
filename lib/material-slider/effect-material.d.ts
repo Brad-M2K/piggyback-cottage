@@ -4,7 +4,7 @@ declare module '*/effect-material.esm.js' {
   }
   
   interface SwiperModule {
-    new(): any;
+    new(): EffectMaterial;
   }
   
   declare const EffectMaterial: SwiperModule;
