@@ -1,7 +1,6 @@
-import { Instagram, Mail, MapPin } from 'lucide-react';
+import { Instagram, MapPin } from 'lucide-react';
 
 const INSTAGRAM_URL = 'https://www.instagram.com/lewisandco_cottages?igsh=N3U0bXZwMDVuMG1z';
-const EMAIL = 'stay@piggybackcottage.example';
 const ADDRESS = 'Piggyback Cottage, Castle Street, Warkworth, Northumberland NE65 0UW';
 
 export default function Footer() {
@@ -14,15 +13,17 @@ export default function Footer() {
                     <p className="text-cream/80 text-base leading-relaxed">
                         Thoughtfully restored, dog-friendly cottage with castle views, log-burning stove, and everything you need for a peaceful break by the coast.
                     </p>
+                    <div className="flex flex-wrap gap-3 pt-4">
+                        <a
+                            className="inline-flex items-center gap-2 rounded-full bg-cream text-forest px-5 py-3 font-semibold hover:bg-golden/80 hover:text-forest transition"
+                            href="#contact"
+                        >
+                            Send an enquiry
+                        </a>
+                    </div>
                 </div>
 
                 <div className="mt-10 md:mt-0 space-y-6">
-                    <div className="flex items-center gap-3 text-cream/90">
-                        <Mail className="h-5 w-5" aria-hidden="true" />
-                        <a className="hover:text-cream transition" href={`mailto:${EMAIL}`}>
-                            {EMAIL}
-                        </a>
-                    </div>
                     <div className="flex items-center gap-3 text-cream/90">
                         <MapPin className="h-5 w-5" aria-hidden="true" />
                         <span>{ADDRESS}</span>
