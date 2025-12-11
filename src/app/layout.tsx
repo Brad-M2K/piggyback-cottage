@@ -21,21 +21,28 @@ const body = Georama({
 });
 
 export const metadata: Metadata = {
-  title: "Piggyback Cottage B&B",
-  description: "A cozy coastal Northumberland getaway.",
+  title: "Lewis & Co Cottages – Piggyback Cottage, Northumberland",
+  description:
+    "Piggyback Cottage, part of Lewis & Co Cottages, is a cosy self-catering retreat on the Northumberland coast – perfect for relaxed breaks, coastal walks and countryside escapes.",
   formatDetection: {
     telephone: false,
   },
+  alternates: {
+    canonical: "https://www.lewisandcocottages.co.uk",
+  },
   openGraph: {
-    type: 'website',
-    title: "Piggyback Cottage B&B",
-    description: "A cozy coastal Northumberland getaway.",
-    siteName: "Piggyback Cottage",
+    type: "website",
+    title: "Lewis & Co Cottages – Piggyback Cottage, Northumberland",
+    description:
+      "Stay at Piggyback Cottage, a welcoming self-catering cottage on the Northumberland coast. Book direct with Lewis & Co Cottages for your next countryside or coastal break.",
+    siteName: "Lewis & Co Cottages",
+    url: "https://www.lewisandcocottages.co.uk",
   },
   twitter: {
-    card: 'summary_large_image',
-    title: "Piggyback Cottage B&B",
-    description: "A cozy coastal Northumberland getaway.",
+    card: "summary_large_image",
+    title: "Lewis & Co Cottages – Piggyback Cottage, Northumberland",
+    description:
+      "A cosy self-catering cottage on the Northumberland coast. Book your stay direct with Lewis & Co Cottages.",
   },
 };
 
@@ -67,7 +74,7 @@ const items: CardNavItem[] = [
       bgColor: "#86A28E", // lightest sage (still darker than background)
       textColor: "var(--background)",
       links: [
-        { label: "Email", href: 'mailto:stay@piggybackcottage.example', ariaLabel: "Email us", icon: 'email' },
+        { label: "Enquire", href: '#contact', ariaLabel: "Go to contact form", icon: 'email' },
         {
           label: "Instagram",
           href: 'https://www.instagram.com/lewisandco_cottages?igsh=N3U0bXZwMDVuMG1z',

@@ -3,6 +3,7 @@ import Description from '@/components/Home/Description';
 import CottageInfo from '@/components/Home/CottageInfo';
 import Reviews from '@/components/Home/Reviews';
 import PhotoCollage from '@/components/Gallery/PhotoCollage';
+import ContactForm from '@/components/Home/ContactForm';
 import fs from 'fs';
 import path from 'path';
 
@@ -87,9 +88,7 @@ export default function Home() {
                         <div className="rounded-2xl bg-white/70 p-5 shadow-sm">
                             <p className="font-semibold text-forest mb-2">Book Direct</p>
                             <p>
-                                Email <a className="underline" href="mailto:stay@piggybackcottage.example">stay@piggybackcottage.example</a> or
-                                call <span className="whitespace-nowrap">01665&nbsp;000000</span> to secure your preferred dates. A 20% deposit is
-                                required on booking with the balance due four weeks before arrival.
+                                Use the enquiry form below to secure your preferred dates. A 20% deposit is required on booking with the balance due four weeks before arrival.
                             </p>
                         </div>
                     </div>
@@ -161,6 +160,10 @@ export default function Home() {
                 </section>
 
                 <Reviews />
+
+                <section id="contact" className="scroll-mt-32">
+                    <ContactForm />
+                </section>
             </div>
         </>
     );

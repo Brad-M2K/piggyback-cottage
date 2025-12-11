@@ -251,6 +251,16 @@ const CardNav: React.FC<CardNavProps> = ({
         email: Mail,
     };
 
+    const scrollToContact = useCallback(() => {
+        const el = document.getElementById('contact');
+        if (el) {
+            el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } else {
+            window.location.hash = '#contact';
+        }
+        closeMenu();
+    }, [closeMenu]);
+
     const renderLink = (link: CardNavLink) => {
         const Icon = link.icon ? iconMap[link.icon] ?? GoArrowUpRight : GoArrowUpRight;
 
@@ -274,6 +284,12 @@ const CardNav: React.FC<CardNavProps> = ({
 
         const handleClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
             if (!link.href) {
+                return;
+            }
+
+            if (link.href.startsWith('#contact')) {
+                event.preventDefault();
+                scrollToContact();
                 return;
             }
 
@@ -381,6 +397,7 @@ const CardNav: React.FC<CardNavProps> = ({
                         type="button"
                         className="card-nav-cta-button hidden md:inline-flex border-0 rounded-[calc(0.75rem-0.2rem)] px-4 md:px-5 font-medium cursor-pointer transition-colors duration-300 items-center justify-center py-0"
                         style={{ backgroundColor: buttonBgColor, color: buttonTextColor, height: ctaHeight }}
+                        onClick={scrollToContact}
                     >
                         Enquire
                     </button>
