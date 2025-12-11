@@ -81,10 +81,6 @@ export default function ContactForm() {
             <Mail className="h-4 w-4" aria-hidden="true" />
             Send enquiry
           </button>
-          <p className="text-xs text-slate">
-            Replace the form <code>action</code> with your Formspree endpoint to
-            wire this up.
-          </p>
         </div>
       </form>
     </div>
