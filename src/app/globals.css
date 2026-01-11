@@ -3,17 +3,17 @@
 /* Piggyback Cottage theme */
 :root {
   /* Base colors */
-  --background: #FFFBE7; /* warm cream background (updated) */
-  --foreground: #7A956B; /* olive text (matches your header) */
+  --background: #fffbe7; /* warm cream background (updated) */
+  --foreground: #95a98a; /* olive text (matches your header) */
 
   /* Your actual color palette */
-  --cream: #FFFBE7; /* matches header baseColor (updated) */
-  --forest: hsl(160, 34%, 27%); /* used for text-forest in your pages */
+  --cream: #fffbe7; /* matches header baseColor (updated) */
+  --forest: hsl(162, 20%, 27%); /* used for text-forest in your pages */
   --heather: #7a5c7b; /* used for text-heather in your pages */
   --slate: #58606b; /* used for text-slate in your pages */
   --golden: #c5a572; /* used for text-golden in your pages */
   --ink: #2a2a2a; /* pure black for when needed */
-  --muted-sage: #A2B095; /* accent color (updated) */
+  --muted-sage: #a2b095; /* accent color (updated) */
 }
 
 @theme inline {
@@ -34,7 +34,8 @@
 }
 
 /* Base styles */
-html, body {
+html,
+body {
   height: 100%;
 }
 html {
@@ -44,28 +45,32 @@ body {
   background: var(--background);
   background-attachment: fixed;
   color: var(--foreground);
-  font-family: var(--font-body), system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  font-family: var(--font-body), system-ui, -apple-system, Segoe UI, Roboto,
+    Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
   text-rendering: optimizeLegibility;
 }
 
-
-/* Headings use the serif heading font for a cozy feel */
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   font-family: var(--font-heading), Georgia, "Times New Roman", serif;
-  color: var(--foreground); /* Use olive instead of black */
+  color: var(--foreground);
 }
 
 /* Utility tweaks for nicer defaults */
 a {
-  color: var(--muted-sage); /* Use your header color */
+  color: var(--muted-sage);
 }
 a:hover {
   color: color-mix(in lch, var(--muted-sage) 80%, var(--forest));
 }
+.nav-card-link:hover {
+  color: inherit;
+}
 
 /* Cottage Hero Styles */
 .cottage-hero {
-  filter: drop-shadow(0 8px 12px rgba(0,0,0,0.15));
+  filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.15));
 }
 
 .nav-card-link .loading-text {

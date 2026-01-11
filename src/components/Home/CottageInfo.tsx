@@ -73,14 +73,14 @@ export default function CottageInfo() {
                     <div className="bg-white/60 backdrop-blur-sm rounded-xl p-6 border border-white/20">
                         <div className="flex items-center gap-3 mb-3">
                             <Castle className="w-5 h-5 text-golden" />
-                            <h4 className="font-semibold text-forest">Alnwick</h4>
+                            <h4 className="font-semibold text-forest">Historic Alnwick</h4>
                         </div>
                         <div className="flex items-center gap-2 mb-3">
                             <Clock className="w-4 h-4 text-muted-sage" />
                             <span className="text-sm text-slate">15 minutes</span>
                         </div>
                         <p className="text-slate text-sm">
-                            Historic town with famous castle, beautiful gardens & convenient shopping
+                            Alnwick, Alnwick Castle & Gardens, bistros, cafes & restaurants, pubs, larger supermarkets
                         </p>
                     </div>
 
@@ -123,8 +123,8 @@ export default function CottageInfo() {
                         Warkworth Village Life
                     </h3>
                     <p className="text-slate text-lg leading-relaxed">
-                        Right on your doorstep, Warkworth offers vibrant pubs and restaurants, 
-                        independent jewelry and chocolate shops, an art gallery, and the impressive 
+                        Right on your doorstep, Warkworth offers vibrant pubs and restaurants,
+                        independent jewellery and chocolate shops, an art gallery, and the impressive
                         Anglican Church of St Lawrence.
                     </p>
                 </div>
@@ -139,7 +139,7 @@ export default function CottageInfo() {
                     <div className="bg-cream/30 rounded-xl p-6 text-center">
                         <Star className="w-8 h-8 text-heather mx-auto mb-3" />
                         <h4 className="font-semibold text-forest mb-2">Shopping</h4>
-                        <p className="text-slate text-sm">Independent jewelry & chocolate shops</p>
+                        <p className="text-slate text-sm">Independent jewellery & chocolate shops</p>
                     </div>
                     <div className="bg-cream/30 rounded-xl p-6 text-center">
                         <Camera className="w-8 h-8 text-golden mx-auto mb-3" />

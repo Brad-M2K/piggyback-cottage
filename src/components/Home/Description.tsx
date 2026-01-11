@@ -1,4 +1,4 @@
-import { MapPin, Users, Bed, Bath, Wifi, Car, Coffee, Heart, ShieldCheck, Home } from 'lucide-react';
+import { MapPin, Users, Bed, Bath, Wifi, Car, Coffee, Heart, ShieldCheck, Home, Castle, Train, Flame } from 'lucide-react';
 import HighlightSection from './Description/HighlightSection';
 import KeyFactsGrid from './Description/KeyFactsGrid';
 import WelcomeBanner from './Description/WelcomeBanner';
@@ -55,9 +55,17 @@ const ACCOMMODATION_HIGHLIGHTS = [
         iconBackground: 'bg-heather/10',
     },
     {
-        icon: Wifi,
+        icon: Flame,
         title: 'Cosy & Considered',
         description: 'Log-burning stove, ambient lighting, welcome hamper, toiletries, and a starter bundle of logs, tea and coffee.',
+        iconColor: 'text-golden',
+        background: 'bg-golden/10',
+        iconBackground: 'bg-golden/10',
+    },
+    {
+        icon: Wifi,
+        title: 'Full Fibre Broadband',
+        description: 'Fast, reliable connection in the cottage.',
         iconColor: 'text-golden',
         background: 'bg-golden/10',
         iconBackground: 'bg-golden/10',
@@ -67,24 +75,40 @@ const ACCOMMODATION_HIGHLIGHTS = [
 const LOCATION_HIGHLIGHTS = [
     {
         icon: MapPin,
-        title: 'Alnmouth Village',
-        description: '10 minutes • Colourful coastal village with beach, cafés and wildlife',
+        title: 'Lindisfarne (Holy Island)',
+        description: '50 mins drive',
         iconColor: 'text-heather',
         background: 'bg-heather/5',
         iconBackground: 'bg-heather/10',
     },
     {
-        icon: Car,
-        title: 'Historic Alnwick',
-        description: '15 minutes • Alnwick Castle, Gardens and larger supermarkets',
+        icon: Castle,
+        title: 'Bamburgh Castle',
+        description: '40 mins drive',
         iconColor: 'text-golden',
         background: 'bg-golden/10',
         iconBackground: 'bg-golden/10',
     },
     {
         icon: Coffee,
-        title: 'Warkworth Village',
-        description: 'On the doorstep • Pubs, restaurants, jewellers, chocolatiers and art gallery',
+        title: 'Warkworth Town Centre',
+        description: 'On the doorstep',
+        iconColor: 'text-forest',
+        background: 'bg-forest/5',
+        iconBackground: 'bg-forest/10',
+    },
+    {
+        icon: Train,
+        title: 'Hipsburn Train Station',
+        description: 'Easy access to Edinburgh, Morpeth, Newcastle',
+        iconColor: 'text-heather',
+        background: 'bg-heather/5',
+        iconBackground: 'bg-heather/10',
+    },
+    {
+        icon: Home,
+        title: 'Post Office & Village Store',
+        description: 'For last-minute essentials',
         iconColor: 'text-forest',
         background: 'bg-forest/5',
         iconBackground: 'bg-forest/10',
