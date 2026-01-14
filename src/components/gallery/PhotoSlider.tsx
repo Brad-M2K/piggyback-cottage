@@ -14,7 +14,7 @@ import EffectMaterialRaw from '../../lib/material-slider/effect-material.esm.js'
 const EffectMaterial = EffectMaterialRaw as unknown as SwiperModule;
 import '../../lib/material-slider/effect-material.css';
 
-interface MaterialSliderProps {
+interface PhotoSliderProps {
   slides: {
     id: string;
     image: string;
@@ -32,7 +32,7 @@ interface MaterialSliderProps {
   className?: string;
 }
 
-export default function MaterialSlider({
+export default function PhotoSlider({
   slides,
   slidesPerView = 2,
   centeredSlides = true,
@@ -43,7 +43,7 @@ export default function MaterialSlider({
   loop = false,
   autoplay = true,
   className = '',
-}: MaterialSliderProps) {
+}: PhotoSliderProps) {
   const swiperRef = useRef<SwiperType | null>(null);
 
   const modules = autoplay ? [EffectMaterial, Autoplay] : [EffectMaterial];

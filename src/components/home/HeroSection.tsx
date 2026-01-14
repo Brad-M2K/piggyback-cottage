@@ -1,7 +1,7 @@
 import Image from "next/image";
-import HeroOverlay from "./HeroOverlay";
+import HeroTextOverlay from "./HeroTextOverlay";
 
-export default function Hero() {
+export default function HeroSection() {
   return (
     <section className="w-full mt-16 md:mt-3 relative flex justify-center">
       <Image
@@ -19,7 +19,7 @@ export default function Hero() {
         }}
         priority
       />
-      <HeroOverlay />
+      <HeroTextOverlay />
     </section>
   );
 }

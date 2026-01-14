@@ -1,6 +1,6 @@
 import { Mail } from "lucide-react";
 
-export default function ContactForm() {
+export default function EnquirySection() {
   return (
     <div className="max-w-5xl mx-auto bg-white/40 border border-muted-sage/20 rounded-3xl shadow-sm backdrop-blur p-8 md:p-12 space-y-6">
       <div className="space-y-2 text-center">

@@ -1,6 +1,6 @@
 import { MapPin } from "lucide-react";
 
-export default function HeroOverlay() {
+export default function HeroTextOverlay() {
   return (
     <div className="absolute -bottom-12 md:-bottom-8 inset-x-0 text-center z-10">
       <h1 className="text-3xl md:text-7xl font-serif text-muted-sage font-bold mb-2 drop-shadow-lg whitespace-nowrap">

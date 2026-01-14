@@ -14,7 +14,7 @@ import '../../lib/material-slider/effect-material.css';
 
 import type { Photo } from '@/types/gallery';
 
-interface MaterialLightboxProps {
+interface PhotoLightboxProps {
     images: Photo[];
     activeIndex: number;
     onClose: () => void;
@@ -23,14 +23,14 @@ interface MaterialLightboxProps {
     onTouchEnd: (event: ReactTouchEvent<HTMLDivElement>) => void;
 }
 
-export default function MaterialLightbox({
+export default function PhotoLightbox({
     images,
     activeIndex,
     onClose,
     onSetIndex,
     onTouchStart,
     onTouchEnd,
-}: MaterialLightboxProps) {
+}: PhotoLightboxProps) {
     const swiperRef = useRef<SwiperType | null>(null);
     const loop = images.length > 1;
 
