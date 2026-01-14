@@ -1,7 +1,7 @@
 import { MapPin, Users, Bed, Bath, Wifi, Car, Coffee, Heart, ShieldCheck, Home, Castle, Train, Flame } from 'lucide-react';
-import HighlightSection from './Description/HighlightSection';
-import KeyFactsGrid from './Description/KeyFactsGrid';
-import WelcomeBanner from './Description/WelcomeBanner';
+import HighlightSection from "./Overview/HighlightSection";
+import KeyFactsGrid from "./Overview/KeyFactsGrid";
+import WelcomeBanner from "./Overview/WelcomeBanner";
 
 const KEY_FACTS = [
     {
@@ -115,7 +115,7 @@ const LOCATION_HIGHLIGHTS = [
     },
 ];
 
-export default function Description() {
+export default function OverviewSection() {
     return (
         <div className="space-y-16 py-12">
             <KeyFactsGrid facts={KEY_FACTS} />

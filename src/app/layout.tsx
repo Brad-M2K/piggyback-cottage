@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Georama } from "next/font/google";
 import "./globals.css";
-import CardNav, { type CardNavItem } from "@/components/Layout/Header/Header";
-import Footer from "@/components/Layout/Footer/Footer";
+import CardNav, { type CardNavItem } from "@/components/layout/cardNav";
+import Footer from "@/components/layout/Footer";
 
 // Site typography: Georama for headings and body
 const heading = Georama({

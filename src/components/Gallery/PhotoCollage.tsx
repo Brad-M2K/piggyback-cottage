@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useMemo } from "react";
 import { buildPatternRows, DEFAULT_PATTERN } from "./collageUtils";
-import MaterialLightbox from "./MaterialLightbox";
+import PhotoLightbox from "./PhotoLightbox";
 import usePhotoLightbox from "./usePhotoLightbox";
 import type { Photo } from "@/types/gallery";
 
@@ -131,7 +131,7 @@ export default function PhotoCollage({
       </div>
 
       {activeIndex !== null ? (
-        <MaterialLightbox
+        <PhotoLightbox
           images={images}
           activeIndex={activeIndex}
           onClose={closeLightbox}

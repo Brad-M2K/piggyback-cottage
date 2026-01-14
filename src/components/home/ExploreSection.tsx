@@ -1,6 +1,6 @@
 import { Camera, TreePine, Castle, Waves, MapPin, Clock, Star, Utensils } from 'lucide-react';
 
-export default function CottageInfo() {
+export default function ExploreSection() {
     return (
         <section className="space-y-16 py-12">
             {/* Activities & Exploration */}

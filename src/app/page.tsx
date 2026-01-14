@@ -1,9 +1,9 @@
-import Hero from "@/components/Home/Hero";
-import Description from "@/components/Home/Description";
-import CottageInfo from "@/components/Home/CottageInfo";
-import Reviews from "@/components/Home/Reviews";
-import PhotoCollage from "@/components/Gallery/PhotoCollage";
-import ContactForm from "@/components/Home/ContactForm";
+import HeroSection from "@/components/home/HeroSection";
+import OverviewSection from "@/components/home/OverviewSection";
+import ExploreSection from "@/components/home/ExploreSection";
+import ReviewsSection from "@/components/home/ReviewsSection";
+import PhotoCollage from "@/components/gallery/PhotoCollage";
+import EnquirySection from "@/components/home/EnquirySection";
 import fs from "fs";
 import path from "path";
 
@@ -122,10 +122,10 @@ const attractionsImages = prioritizeImages(
 export default function Home() {
   return (
     <>
-      <Hero />
+      <HeroSection />
       <div className="min-h-screen max-w-6xl mx-auto px-8 md:px-20 space-y-20">
         <section id="details" className="scroll-mt-32 space-y-16">
-          <Description />
+          <OverviewSection />
         </section>
 
         <section
@@ -192,7 +192,7 @@ export default function Home() {
         </section>
 
         <section id="location" className="scroll-mt-32">
-          <CottageInfo />
+          <ExploreSection />
         </section>
 
         <section id="local-favourites" className="scroll-mt-32 space-y-6">
@@ -253,10 +253,10 @@ export default function Home() {
           </div>
         </section>
 
-        <Reviews />
+        <ReviewsSection />
 
         <section id="contact" className="scroll-mt-32">
-          <ContactForm />
+          <EnquirySection />
         </section>
       </div>
     </>

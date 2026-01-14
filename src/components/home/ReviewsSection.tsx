@@ -13,7 +13,7 @@ const REVIEWS = [
     },
 ];
 
-export default function Reviews() {
+export default function ReviewsSection() {
     return (
         <section id="reviews" className="scroll-mt-32 space-y-10 py-16">
             <div className="text-center space-y-3">
