@@ -138,7 +138,7 @@ export default function Home() {
             </h2>
             <p className="text-slate text-base leading-relaxed">
               Sleeps 5 guests across three bedrooms with two bathrooms and three
-              WCs. Blow-up airbed provided for the extra bed. Rates vary by
+              WCs. Blow-up airbed provided if an extra bed is needed. Rates vary by
               season and are available on enquiry. A small welcome pack, luxury
               linens, toiletries, and a starter bundle of logs, tea and coffee
               are all included.
